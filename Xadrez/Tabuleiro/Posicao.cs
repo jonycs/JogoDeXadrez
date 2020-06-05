@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-
-namespace Tabuleiro
+﻿namespace tabuleiro
 {
     class Posicao
     {
