@@ -1,4 +1,5 @@
-﻿using tabuleiro;
+﻿using System;
+using tabuleiro;
 
 namespace Xadrez
 {
@@ -8,18 +9,46 @@ namespace Xadrez
         {
             for ( int i = 0; i<tab.linhas; i++)
             {
+                Console.Write(8-i + " |");
                 for(int j = 0; j < tab.colunas;j++)
                 {
                     if (tab.peca(i,j) == null)
                     {
+                        Console.BackgroundColor = ConsoleColor.Blue;
                         System.Console.Write("- ");
+                        Console.ResetColor();
                     }
                     else
                     {
-                        System.Console.Write(tab.peca(i, j) + " ");
+                        imprimirPeca(tab.peca(i, j));
                     }
                 }
-                System.Console.WriteLine();
+                Console.WriteLine();
+            }
+            Console.WriteLine("__________________");
+            Console.WriteLine("   a b c d e f g h");
+        }
+        public static void imprimirPeca(Peca peca)
+        {
+            if (peca.cor == Cor.Preta)
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.Write(peca);
+                Console.ResetColor();
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write(" ");
+                Console.ResetColor();
+
+            }
+            else if(peca.cor == Cor.Branca)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write(peca);
+                Console.ResetColor();
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write(" ");
+                Console.ResetColor();
             }
         }
     }
