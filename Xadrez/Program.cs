@@ -1,6 +1,7 @@
 ﻿using tabuleiro;
 using xadrez;
 using System;
+using Xadrez.xadrez;
 
 namespace Xadrez
 {
@@ -8,9 +9,25 @@ namespace Xadrez
     {
         static void Main(string[] args)
         {
+
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();
+                while (!partida.terminada)
+                {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
+
+                    Console.WriteLine();
+                    Console.WriteLine("Origem: ");
+                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                    Console.WriteLine("Destino: ");
+                    Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
+
+                    partida.executaMovimento(origem, destino);
+                }
+                
+                /*Tabuleiro tab = new Tabuleiro(8, 8);
 
                 tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
                 tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 7));
@@ -45,7 +62,8 @@ namespace Xadrez
                 tab.colocarPeca(new Peao(tab, Cor.Branca), new Posicao(6, 5));
                 tab.colocarPeca(new Peao(tab, Cor.Branca), new Posicao(6, 6));
                 tab.colocarPeca(new Peao(tab, Cor.Branca), new Posicao(6, 7));
-                Tela.imprimirTabuleiro(tab);
+                */
+                
                 
             }
             catch(TabuleiroException error)
